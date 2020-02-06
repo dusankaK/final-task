@@ -32,11 +32,18 @@ export const PostStore = {
     setPost (state, post) {
       state.allPosts.push({ id: state.nextId, ...post })
       state.nextId++
+    },
+    deleteExistingPost (state, post) {
+      let postIndex = state.allPosts.indexOf(post)
+      state.allPosts.splice(postIndex, 1)
     }
   },
   actions: {
     addPost (context, post) {
       context.commit('setPost', post)
+    },
+    deletePost (context, post) {
+      context.commit('deleteExistingPost', post)
     }
   },
   getters: {

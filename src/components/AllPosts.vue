@@ -7,6 +7,13 @@
         <div class="card-body">
           <h5 class="card-title">{{ post.title }}</h5>
           <p class="card-text">{{ post.body }}</p>
+          <button
+            class="btn btn-danger"
+            type="button"
+            @click="removePost(post)"
+          >
+            RemovePost
+          </button>
         </div>
       </div>
     </div>
@@ -14,7 +21,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "AllPosts",
@@ -22,6 +29,14 @@ export default {
     ...mapGetters({
       getPosts: "getPosts"
     })
+  },
+  methods: {
+    ...mapActions({
+      deletePost: "deletePost"
+    }),
+    removePost(post) {
+      this.deletePost(post);
+    }
   }
 };
 </script>

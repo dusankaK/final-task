@@ -55,9 +55,17 @@ export const PostStore = {
       return state.allPosts
     },
     filteredPosts (state) {
-      return state.allPosts.filter(post =>
+      let filterTitle = state.allPosts.filter(post =>
         post.title.toLowerCase().includes(state.searchTerm.toLowerCase())
       )
+
+      let filterBody = state.allPosts.filter(post =>
+        post.body.toLowerCase().includes(state.searchTerm.toLowerCase())
+      )
+
+      let filtered = [...new Set([...filterTitle, ...filterBody])]
+
+      return filtered
     }
   }
 }

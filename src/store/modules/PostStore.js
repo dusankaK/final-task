@@ -26,7 +26,8 @@ export const PostStore = {
           'The best way to remember it is that A is for ageing (the UV rays that permanently damage your skin cells) and B is for burning (the radiation that causes sunburn and sun damage). So SPF (sun protection factor)  works to protect against both.'
       }
     ],
-    nextId: 4
+    nextId: 4,
+    searchTerm: ''
   },
   mutations: {
     setPost (state, post) {
@@ -36,6 +37,9 @@ export const PostStore = {
     deleteExistingPost (state, post) {
       let postIndex = state.allPosts.indexOf(post)
       state.allPosts.splice(postIndex, 1)
+    },
+    setSearchTerm (state, { term }) {
+      state.searchTerm = term
     }
   },
   actions: {
@@ -49,6 +53,11 @@ export const PostStore = {
   getters: {
     getPosts (state) {
       return state.allPosts
+    },
+    filteredPosts (state) {
+      return state.allPosts.filter(post =>
+        post.title.toLowerCase().includes(state.searchTerm.toLowerCase())
+      )
     }
   }
 }

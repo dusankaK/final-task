@@ -28,6 +28,9 @@ export default {
   computed: {
     ...mapGetters({
       getPosts: "getPosts"
+    }),
+    ...mapGetters({
+      getPosts: "filteredPosts"
     })
   },
   methods: {

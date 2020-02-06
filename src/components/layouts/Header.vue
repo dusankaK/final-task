@@ -28,7 +28,16 @@
             </router-link>
           </li>
         </ul>
+        <PostSearch />
       </div>
     </nav>
   </header>
 </template>
+<script>
+import PostSearch from "../PostSearch";
+export default {
+  components: {
+    PostSearch
+  }
+};
+</script>

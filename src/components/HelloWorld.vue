@@ -22,7 +22,7 @@
       <li>
         <a
           href="https://chat.vuejs.org"
-          target="_blank"
+          tsarget="_blank"
         >
           Community Chat
         </a>
